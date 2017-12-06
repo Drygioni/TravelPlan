@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "657201400470",
+    "firebase_url": "https://travelplan-fda50.firebaseio.com",
+    "project_id": "travelplan-fda50",
+    "storage_bucket": "travelplan-fda50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657201400470:android:0fd998b796fa1f94",
+        "android_client_info": {
+          "package_name": "com.example.jaredboese.travelplan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657201400470-oomcccb2h8tlggbf88qnu4an3eepe75p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpV-r8yJTzpCoS2wDMCLM13nptEwlGccs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
