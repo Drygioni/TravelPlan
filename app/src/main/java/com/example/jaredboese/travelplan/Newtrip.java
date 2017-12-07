@@ -29,54 +29,46 @@ import static com.example.jaredboese.travelplan.CoreActivity.TAG;
  */
 
 
-public class Newtrip extends Activity {
-    private EditText StartDate, EndDate;
+public class Newtrip extends CoreActivity {
+    private EditText StartDate, EndDate, DepartTime, ArriveTime,DepartLocation,ArriveLocation ;
     private Button Addbutton;
-    private ArrayAdapter<String> adapter;
-    private ArrayList<String> arrayList;
-    private DatabaseReference mDatabase;
-
-    //  public static final String TAG = "Mytravels";
-    public class TripInfo{
-        public String StartDate;
-        public String EndDate;
-
-        public TripInfo() {
-
-        }
-        public TripInfo(String StartDate, String EndDate){
-            this.StartDate = StartDate;
-            this.EndDate = EndDate;
-        }
-
-    }
-
-    private void WriteToFB(String TripID,String StartDate, String EndDate){
-        TripInfo tripinfo = new TripInfo(StartDate, EndDate);
+   // private DatabaseReference mDatabase;
 
 
+    private void WriteToFB(String TripID,String StartDate, String EndDate, String DepartTime, String ArriveTime,
+                           String DepartLocation, String ArriveLocation){
+        FBDatabase.TripInfo tripinfo = new FBDatabase.TripInfo(StartDate, EndDate,DepartTime, ArriveTime,
+                DepartLocation, ArriveLocation);
 
-        mDatabase.child("StartDate").child(TripID).setValue(StartDate);
-        mDatabase.child("EndDate").child(TripID).setValue(EndDate);
+        mRef.child(TripID).child("StartDate").setValue(StartDate);
+        mRef.child(TripID).child("EndDate").setValue(EndDate);
+        mRef.child(TripID).child("DepartTime").setValue(DepartTime);
+        mRef.child(TripID).child("ArriveTime").setValue(ArriveTime);
+        mRef.child(TripID).child("DepartLocation").setValue(DepartLocation);
+        mRef.child(TripID).child("ArriveLocation").setValue(ArriveLocation);
+
+
     }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //views
         setContentView(R.layout.tripscreen);
         StartDate = (EditText) findViewById(R.id.EnterDate);
         EndDate = (EditText)findViewById(R.id.enddate);
+        DepartTime = (EditText)findViewById(R.id.departtime);
+        ArriveTime = (EditText) findViewById(R.id.arrivaltime);
+        DepartLocation = (EditText) findViewById(R.id.departlocation);
+        ArriveLocation = (EditText)findViewById(R.id.arrivelocation);
+
+        Addbutton = (Button)findViewById(R.id.button2);
+
+
         StartDate.setText("mm/dd/yyyy");
         EndDate.setText("mm/dd/yyyy");
-        //new DateInput(StartDate);
-        Addbutton = (Button)findViewById(R.id.button2);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-       final String strDate = dateFormat.format(date).toString();
-       // final String string = new DateInput(StartDate).toString();
-       // Tester.setText(sutring);
 
+        //init Database
+      //  mRef = FirebaseDatabase.getInstance().getReference();
 
 
 
@@ -85,9 +77,23 @@ public class Newtrip extends Activity {
             public void onClick(View v) {
                 String startdate = StartDate.getText().toString();
                 String enddate = EndDate.getText().toString();
-                WriteToFB("Placeholder",startdate,enddate);
+                String departtime = DepartTime.getText().toString();
+                String arrivetime = ArriveTime.getText().toString();
+                String departlocation = DepartLocation.getText().toString();
+                String arrivelocation = ArriveLocation.getText().toString();
 
-                //ester.setText(strDate);
+                //format data
+                startdate = "Start Date: " + startdate;
+                enddate = "End Date: " + enddate;
+                departtime = "Departure Time: " + departtime;
+                arrivetime = "Arrival Time: " + arrivetime;
+                departlocation = "Depart From : " + departlocation;
+                arrivelocation = "Arrive at :" + arrivelocation;
+
+                WriteToFB("TripID",startdate,enddate,departtime,arrivetime,
+                        departlocation,arrivelocation);
+                finish();
+
             }
         });
 
@@ -95,54 +101,9 @@ public class Newtrip extends Activity {
 
     }
 
-
-
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
 }
-
-
- /*       editTxt = (EditText) findViewById(R.id.EditText);
-        button = (Button) findViewById(R.id.button);
-        rbutton = (Button) findViewById(R.id.Rbutton);
-        listview = (ListView) findViewById(R.id.ListView);
-        arrayList = new ArrayList<String>();
-        adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_item, arrayList);
-
-        listview.setAdapter(adapter);
-        Object o = new Object();
-
-        button.setOnClickListener(new OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                arrayList.add(editTxt.getText().toString());
-
-                adapter.notifyDataSetChanged();
-                Log.d(TAG, "onClick: Size is" + arrayList.size());
-            }
-        });
-
-
-        rbutton.setOnClickListener(new OnClickListener()
-        {
-
-
-            @Override
-            public void onClick(View v) {
-                int size = arrayList.size();
-                String Toremove = new String();
-                for(int i = 0;i<size;i++){
-                    Toremove = Integer.toString(i);
-                }
-                adapter.remove(Toremove);
-                adapter.notifyDataSetChanged();
-            }
-        });
-
-
-        FBDatabase mDB = new FBDatabase();
-        FBDatabase.testread();
-    }
-
-*/
 

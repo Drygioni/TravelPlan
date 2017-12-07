@@ -26,11 +26,13 @@
                 <action android:name="com.example.jaredboese.travelplan.tripscreen" />
 
                 <category android:name="android.intent.category.DEFAULT" />
+
             </intent-filter>
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
+        <activity android:name=".ViewTrip"></activity>
     </application>
 
 </manifest>

@@ -7,6 +7,8 @@ import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,16 +28,16 @@ public class CoreActivity extends AppCompatActivity implements AutoCloseable {
         super.onDestroy();
     }
 
-    // public StorageReference mStorageRef;
 
 
     Prefs prefs() { return mModel.self().prefs(); }
-  //  User user() { return mModel.self().user(); }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
+        mRef = FirebaseDatabase.getInstance().getReference();
+
         // mStorageRef = FirebaseStorage.getInstance().getReference();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -79,6 +81,7 @@ public class CoreActivity extends AppCompatActivity implements AutoCloseable {
 
     }
     public FirebaseAuth mAuth;
+    public DatabaseReference mRef;
 
     FirebaseAuth.AuthStateListener mAuthListener;
 

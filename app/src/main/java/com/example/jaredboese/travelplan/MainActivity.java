@@ -22,6 +22,10 @@ public class MainActivity extends CoreActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //views
+        Button newtrip = (Button) findViewById(R.id.NTbutton);
+        Button signowt = (Button) findViewById(R.id.signoutbtn);
+        Button viewbutn = (Button) findViewById(R.id.Viewbtn);
 
        mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -40,14 +44,19 @@ public class MainActivity extends CoreActivity {
                 // ...
             }
         };
-        Button newtrip = (Button) findViewById(R.id.NTbutton);
-        Button signowt = (Button) findViewById(R.id.signoutbtn);
-       // login();
+
         signowt.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
                 logout();
+            }
+        });
+        viewbutn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ViewTrip.class);
+                MainActivity.this.startActivity(intent);
             }
         });
         newtrip.setOnClickListener(new View.OnClickListener() {
@@ -59,29 +68,6 @@ public class MainActivity extends CoreActivity {
         });
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        // Check which request we're responding to
-//        Log.i(TAG,"request = " + requestCode + " result = " + resultCode + " (ok=" + RESULT_OK + ")");
-//        switch(requestCode) {
-//            case LOGIN_REQUEST:
-//                // Make sure the request was successful
-//                if (resultCode == RESULT_OK) {
-//                    Log.i(TAG, "user is " + mAuth.getCurrentUser());
-//
-//
-//                    // The user picked a contact.
-//                    // The Intent's data Uri identifies which contact was selected.
-//
-//                    // Do something with the contact here (bigger example below)
-//                } else {
-//                    login();
-//                }
-//                break;
-//            default:
-//                Log.i(TAG, "no result handler");
-//        }
-//    }
     @Override
     public void onResume() {
         super.onResume();

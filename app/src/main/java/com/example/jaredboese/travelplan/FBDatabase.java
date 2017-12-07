@@ -10,14 +10,33 @@ import com.google.firebase.database.FirebaseDatabase;
 public class FBDatabase extends Newtrip{
 
 
+    public static class TripInfo{
+        public String StartDate;
+        public String EndDate;
+        public String ArriveTime;
+        public String DepartTime;
+        public String ArriveLocation;
+        public String DepartLocation;
+
+        public TripInfo() {
+
+        }
+        public TripInfo(String StartDate, String EndDate, String DepartTime, String ArriveTime,
+                        String DepartLocation, String ArriveLocation){
+            this.StartDate = StartDate;
+            this.EndDate = EndDate;
+            this.DepartTime = DepartTime;
+            this.ArriveTime = ArriveTime;
+            this.DepartLocation = DepartLocation;
+            this.ArriveLocation = ArriveLocation;
 
 
-    public static void testread(){
-        DatabaseReference mDatabase;
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference users = mDatabase.child("messages");
-        mDatabase.setValue("Hello World");
+
+        }
 
     }
+
+
+
 
 }

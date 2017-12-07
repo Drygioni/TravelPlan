@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "657201400470-pf978oivl3g34f7okkmt02ieibaaibpa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jaredboese.travelplan",
+            "certificate_hash": "a71f26bb1cb310d27916a0bf95b16a0f8a64a490"
+          }
+        },
+        {
           "client_id": "657201400470-oomcccb2h8tlggbf88qnu4an3eepe75p.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657201400470-oomcccb2h8tlggbf88qnu4an3eepe75p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
