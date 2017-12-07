@@ -1,28 +1,11 @@
 package com.example.jaredboese.travelplan;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
-import static com.example.jaredboese.travelplan.CoreActivity.TAG;
 
 /**
  * Created by Jared Boese on 10/17/2017.
@@ -64,8 +47,8 @@ public class Newtrip extends CoreActivity {
         Addbutton = (Button)findViewById(R.id.button2);
 
 
-        StartDate.setText("mm/dd/yyyy");
-        EndDate.setText("mm/dd/yyyy");
+        new DateInput(StartDate);
+        new DateInput(EndDate);
 
         //init Database
       //  mRef = FirebaseDatabase.getInstance().getReference();

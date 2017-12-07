@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.example.jaredboese.travelplan.Util.*;
+import static com.example.jaredboese.travelplan.Util.eq;
 
 /**
  * Created by Jared Boese on 12/4/2017.
