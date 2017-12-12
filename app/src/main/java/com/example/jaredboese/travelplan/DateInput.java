@@ -51,7 +51,7 @@ public class DateInput implements TextWatcher {
 
                 mon = mon < 1 ? 1 : mon > 12 ? 12 : mon;
                 cal.set(Calendar.MONTH, mon-1);
-                year = (year<1900)?1900:(year>2100)?2100:year;
+                year = (year<cal.get(Calendar.YEAR))?cal.get(Calendar.YEAR):(year>2100)?2100:year;
                 cal.set(Calendar.YEAR, year);
                 // ^ first set year for the line below to work correctly
                 //with leap years - otherwise, date e.g. 29/02/2012
